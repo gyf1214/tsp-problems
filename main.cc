@@ -42,9 +42,9 @@ int main(int argc, char **argv) {
     assert(argc == 2);
     string prefix(argv[1]);
 
-    fstream fin(prefix + "/in", ios::in);
-    fstream fout(prefix + "/out", ios::out);
-    fstream ferr(prefix + "/log", ios::out);
+    fstream fin((prefix + "/in").c_str(), ios::in);
+    fstream fout((prefix + "/out").c_str(), ios::out);
+    fstream ferr((prefix + "/log").c_str(), ios::out);
 
     int n = map.input(fin);
     srand(time(NULL));

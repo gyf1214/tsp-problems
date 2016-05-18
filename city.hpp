@@ -4,7 +4,7 @@
 #include <iostream>
 
 namespace TSP {
-    const int maxCity = 40000;
+    const int maxCity = 1000;
 
     struct City {
         double x, y;
