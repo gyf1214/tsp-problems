@@ -34,7 +34,7 @@ void work(ostream &out, ostream &logger, int n) {
         if (ans == lastAns) {
             print(train.best(), n, out);
             break;
-        }
+        } else lastAns = ans;
     }
 }
 
