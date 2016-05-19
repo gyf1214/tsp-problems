@@ -12,6 +12,7 @@ using namespace TSP;
 Map map;
 Train train(map);
 const int batchSize = 10000;
+const int logSize = 100;
 
 double print(const Gene &best, int n, ostream &o) {
     for (int i = 0; i < n - 1; ++i) o << best.getData()[i] << " ";
@@ -26,9 +27,11 @@ void work(ostream &out, ostream &logger, int n) {
     train.select();
     for (;;) {
         double ans;
-        for (int i = 0; i < batchSize; ++i) {
-            train.generate();
-            train.select();
+        for (int i = 0; i < batchSize / logSize; ++i) {
+            for (int j = 0; j < logSize; ++j) {
+                train.generate();
+                train.select();
+            }
             ans = print(train.best(), n, logger);
         }
         if (ans == lastAns) {
