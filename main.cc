@@ -11,7 +11,7 @@ using namespace TSP;
 
 Map map;
 Train train(map);
-const int batchSize = 1000;
+const int batchSize = 10000;
 
 double print(const Gene &best, int n, ostream &o) {
     for (int i = 0; i < n - 1; ++i) o << best.getData()[i] << " ";
