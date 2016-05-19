@@ -19,27 +19,27 @@ def pre
     ys.push y
   end
   @left, @right = xs.min, xs.max
-  @top, @bottom = ys.min, ys.max
+  @bottom, @top = ys.min, ys.max
   @right -= @left
-  @bottom -= @top
-  @width = (@height / @bottom * @right).round
+  @top -= @bottom
+  @width = (@height / @top * @right).round
   @cities.map! { |e| trans e }
 end
 
 def trans point
   x, y = point
-  nx = (x - @left) / @right * @width + @margin
-  ny = (y - @top) / @bottom * @height + @margin
+  nx = (1 - (x - @left) / @right) * @width + @margin
+  ny = (y - @bottom) / @top * @height + @margin
   [nx, ny].map &:round
 end
 
 def draw seq
   l = seq.last
-  ret = CvMat.new @height + 2 * @margin, @width + 2 * @margin, CV_8UC1
+  ret = CvMat.new @width + 2 * @margin, @height + 2 * @margin, CV_8UC1
   ret.set! CvColor::White
   seq.each do |x|
     u, v = @cities[l], @cities[x]
-    ret.line! CvPoint.new(u[0], u[1]), CvPoint.new(v[0], v[1]), color: CvColor::Black
+    ret.line! CvPoint.new(u[1], u[0]), CvPoint.new(v[1], v[0]), color: CvColor::Black
     l = x
   end
   ret
