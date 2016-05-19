@@ -15,7 +15,7 @@ const int batchSize = 1000;
 
 double print(const Gene &best, int n, ostream &o) {
     for (int i = 0; i < n - 1; ++i) o << best.getData()[i] << " ";
-    o << best.getData()[n] << endl;
+    o << best.getData()[n - 1] << endl;
     double ans = 1 / best.evaluate(map);
     o << ans << endl;
     return ans;
