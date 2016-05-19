@@ -1,5 +1,6 @@
 #include "gene.hpp"
 #include <cstdlib>
+#include <cstring>
 #include <algorithm>
 
 using std::memcpy;
