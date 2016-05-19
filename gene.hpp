@@ -5,9 +5,16 @@
 
 namespace TSP {
     class Gene {
-        int data[maxCity], temp[maxCity];
+        int *data, *temp;
         int nCity;
+        void allocate(int);
     public:
+        Gene(void);
+        Gene(int);
+        Gene(const Gene &);
+        ~Gene(void);
+        Gene &operator =(const Gene &);
+
         void init(int);
         double evaluate(const Map &) const;
         void varySelf(void);
