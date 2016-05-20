@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -g
+CXXFLAGS = -Wall -O2
 TARGET = main
 LIB = main.o city.o gene.o train.o
 HEADERS = city.hpp gene.hpp train.hpp

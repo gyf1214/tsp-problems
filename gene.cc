@@ -50,16 +50,21 @@ namespace TSP {
         return ret;
     }
 
-    Gene *Gene::varySelf() {
-        int i = rand() % nCity;
-        int j = rand() % nCity;
-        while (i == j) j = rand() % nCity;
-        swap(data[i], data[j]);
-        return this;
-    }
-
-    Gene *Gene::vary() const {
-        return (new Gene(*this)) -> varySelf();
+    Gene *Gene::vary(const Map &map) const {
+        int a = rand() % nCity;
+        int b = (a + 1) % nCity;
+        int c, d;
+        for (c = (b + 1) % nCity; (d = (c + 1) % nCity) != a; c = (c + 1) % nCity) {
+            if (map.distance(data[a], data[b]) + map.distance(data[c], data[d])
+                > map.distance(data[a], data[c]) + map.distance(data[b], data[d])) break;
+        }
+        if (d == a) return NULL;
+        Gene *ret = new Gene(nCity);
+        for (; b != d; b = (b + 1) % nCity, c = (c - 1 + nCity) % nCity) {
+            ret -> data[b] = data[c];
+        }
+        for (; d != (a + 1) % nCity; d = (d + 1) % nCity) ret -> data[d] = data[d];
+        return ret;
     }
 
     Gene *Gene::orderCross(const Gene *o) const {

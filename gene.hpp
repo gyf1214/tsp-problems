@@ -18,8 +18,7 @@ namespace TSP {
 
         Gene *init(int);
         double evaluate(const Map &) const;
-        Gene *varySelf(void);
-        Gene *vary(void) const;
+        Gene *vary(const Map &) const;
         Gene *orderCross(const Gene *) const;
         const int *getData(void) const;
     };

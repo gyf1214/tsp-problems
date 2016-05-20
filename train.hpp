@@ -6,7 +6,7 @@
 
 namespace TSP {
     const int scale = 200;
-    const double pc = 1;
+    const double pc = 0.1;
     const double pm = 1;
 
     class Train {

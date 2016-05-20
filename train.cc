@@ -27,7 +27,10 @@ namespace TSP {
 
     void Train::generate() {
         for (int i = 0; i < scale; ++i) {
-            if (randDouble() < pm) pop.push_back(pop[i] -> vary());
+            if (randDouble() < pm) {
+                Gene *x = pop[i] -> vary(map);
+                if (x) pop.push_back(x);
+            }
         }
         for (int i = 0; i < scale; ++i) {
             if (randDouble() < pc) {
