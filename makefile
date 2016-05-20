@@ -1,5 +1,5 @@
 CXX = g++
-CXXFLAGS = -Wall -O2
+CXXFLAGS = -Wall -g
 TARGET = main
 LIB = main.o city.o gene.o train.o
 HEADERS = city.hpp gene.hpp train.hpp
@@ -18,5 +18,5 @@ rebuild: clean all
 $(TARGET): $(LIB)
 	$(CXX) $(CXXFLAGS) -o $@ $^
 
-%.o: %.cc $(HEADERS)
+%.o: %.cc $(HEADERS) makefile
 	$(CXX) $(CXXFLAGS) -c -o $@ $<
