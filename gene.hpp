@@ -7,19 +7,20 @@ namespace TSP {
     class Gene {
         int *data, *temp;
         int nCity;
-        void allocate(int);
+        Gene *allocate(int);
     public:
+        double p;
+
         Gene(void);
         Gene(int);
         Gene(const Gene &);
         ~Gene(void);
-        Gene &operator =(const Gene &);
 
-        void init(int);
+        Gene *init(int);
         double evaluate(const Map &) const;
-        void varySelf(void);
-        Gene vary(void);
-        Gene orderCross(const Gene &);
+        Gene *varySelf(void);
+        Gene *vary(void) const;
+        Gene *orderCross(const Gene *) const;
         const int *getData(void) const;
     };
 }

@@ -14,10 +14,10 @@ Train train(map);
 const int batchSize = 10000;
 const int logSize = 1000;
 
-double print(const Gene &best, int n, ostream &o) {
-    for (int i = 0; i < n - 1; ++i) o << best.getData()[i] << " ";
-    o << best.getData()[n - 1] << endl;
-    double ans = 1 / best.evaluate(map);
+double print(const Gene *best, int n, ostream &o) {
+    for (int i = 0; i < n - 1; ++i) o << best -> getData()[i] << " ";
+    o << best -> getData()[n - 1] << endl;
+    double ans = best -> evaluate(map);
     o << ans << endl;
     return ans;
 }

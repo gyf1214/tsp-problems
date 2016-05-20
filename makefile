@@ -2,6 +2,7 @@ CXX = g++
 CXXFLAGS = -Wall -O2
 TARGET = main
 LIB = main.o city.o gene.o train.o
+HEADERS = city.hpp gene.hpp train.hpp
 
 all: $(TARGET)
 
@@ -16,3 +17,6 @@ rebuild: clean all
 
 $(TARGET): $(LIB)
 	$(CXX) $(CXXFLAGS) -o $@ $^
+
+%.o: %.cc $(HEADERS)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
