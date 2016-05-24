@@ -2,3 +2,7 @@
 main
 **/out
 **/log
+report.aux
+report.pdf
+report.synctex.gz
+report.log
